@@ -1,6 +1,6 @@
 ---
 slug: introduction-to-mev-and-aptos
-title: Introduction to MEV and Its Relevance to Aptos
+title: An Introduction to MEV and Its Impact on Aptos
 authors: [kofi]
 tags: [mev, aptos]
 date: 2025-02-15
@@ -21,10 +21,10 @@ In essence, MEV is extracted through the reordering of transactions within a blo
 1. **Miner Bribing (2015-2022):**
    In the early days of Ethereum's Proof of Work era, users could attempt to influence miners to include or order their transactions in specific ways. This was often done through smart contracts that offered additional rewards to miners for favorable transaction placement.
 
-2. **Gas fee reordering (Not guaranteed) (2015-2021):**
+2. **Gas fee reordering (ordering not guaranteed) (2015-2021):**
    Miners typically ordered transactions based on gas fees, with higher-fee transactions getting priority. Users could increase their gas price to improve their chances of earlier inclusion, though this didn't guarantee a specific order.
 
-3. **Priority fee reordering (Not guaranteed) (2021-present):**
+3. **Priority fee reordering (ordering not guaranteed) (2021-present):**
    Introduced with EIP-1559 in August 2021, the priority fee allowed users to directly incentivize miners (later validators) to include their transactions. While higher priority fees increased the likelihood of quicker inclusion, they still didn't guarantee a specific order.
 
 4. **Flashbots / Bundling (2020-present):**
@@ -51,9 +51,9 @@ Aptos uses AptosBFT, a consensus algorithm based on HotStuff, which implements a
 
 The Block-STM parallel execution engine introduces a paradigm shift in how transactions are processed, significantly impacting MEV extraction:
 
-1. **Dynamic Reordering:** The engine may reorder transactions across one or more blocks to optimize concurrency, as explained in the [Aptos whitepaper](https://aptosfoundation.org/whitepaper/aptos-whitepaper_en.pdf). MEV extractors will need to adapt their strategies to account for both [sender-aware](https://github.com/aptos-foundation/AIPs/blob/main/aips/aip-68.md) and [use-case-aware](https://github.com/aptos-foundation/AIPs/blob/main/aips/aip-27.md) shuffling, potentially reducing the effectiveness of certain MEV extraction techniques that rely on precise transaction ordering.
+1. **Dynamic Reordering:** The engine may reorder transactions across one or more blocks to optimize concurrency—meaning that the order of transactions might change dynamically between blocks, as explained in the [Aptos whitepaper](https://aptosfoundation.org/whitepaper/aptos-whitepaper_en.pdf). MEV extractors will need to adapt their strategies to account for both [sender-aware](https://github.com/aptos-foundation/AIPs/blob/main/aips/aip-68.md) and [use-case-aware](https://github.com/aptos-foundation/AIPs/blob/main/aips/aip-27.md) shuffling, potentially reducing the effectiveness of certain MEV extraction techniques that rely on precise transaction ordering.
 
-2. **Conflict-Induced re-execution:** When conflicts occur and transactions are re-executed, it can change the state that subsequent transactions interact with, potentially invalidating MEV extraction strategies that rely on a specific state sequence.
+2. **Conflict-Induced re-execution:** When conflicts occur, transactions may be re-executed, altering the state that subsequent transactions interact with and potentially invalidating MEV extraction strategies.
 
 3. **Ripple Effect:** When a transaction aborts due to a conflict, all higher transactions in the block are scheduled for [re-validation](https://stackoverflow.com/questions/77804820/block-stm-why-do-we-need-this-condition-when-a-transaction-aborts-all-higher). This cascading effect introduces further unpredictability in the final transaction order and state.
 
@@ -63,6 +63,6 @@ Understanding and proactively managing MEV is critical for ensuring the success 
 
 - **Promoting Fair Markets:** By managing MEV effectively, developers and network architects can [mitigate economic inefficiencies](https://chain.link/education-hub/maximal-extractable-value-mev) across DeFi protocols built on Aptos.
 
-- **Improve Validator Revennue:** MEV can significantly boost validator earnings, incentivizing network participation and security. On Ethereum, MEV Boost has [increased validator revenue by up to 75%](https://everstake.one/blog/double-your-profits-from-eth-staking-mev-boost-guide-for-validators). Similarly, on Solana, MEV rewards have become a substantial income source for validators, with the network [earning $8 million in total economic value from tips and transaction fees in a single week](https://solanacompass.com/learn/Lightspeed/unpacking-solanas-total-economic-value-dan-smith).
+- **Improve Validator Revenue:** MEV can significantly boost validator earnings, incentivizing network participation and security. On Ethereum, MEV Boost has [increased validator revenue by up to 75%](https://everstake.one/blog/double-your-profits-from-eth-staking-mev-boost-guide-for-validators). Similarly, on Solana, MEV rewards have become a substantial income source for validators, with the network [earning $8 million in total economic value from tips and transaction fees in a single week](https://solanacompass.com/learn/Lightspeed/unpacking-solanas-total-economic-value-dan-smith).
 
 As we continue our exploration into MEV infrastructure on Aptos, future discussions will dive into tailored strategies, potential challenges, and innovative solutions to ensure a secure and efficient blockchain environment.

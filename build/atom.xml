@@ -8,7 +8,7 @@
     <subtitle>Kofi Finance Blog</subtitle>
     <icon>https://blog.kofi.finance/img/favicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[Introduction to MEV and Its Relevance to Aptos]]></title>
+        <title type="html"><![CDATA[An Introduction to MEV and Its Impact on Aptos]]></title>
         <id>https://blog.kofi.finance/introduction-to-mev-and-aptos</id>
         <link href="https://blog.kofi.finance/introduction-to-mev-and-aptos"/>
         <updated>2025-02-15T00:00:00.000Z</updated>
@@ -25,11 +25,11 @@
 In the early days of Ethereum's Proof of Work era, users could attempt to influence miners to include or order their transactions in specific ways. This was often done through smart contracts that offered additional rewards to miners for favorable transaction placement.</p>
 </li>
 <li>
-<p><strong>Gas fee reordering (Not guaranteed) (2015-2021):</strong>
+<p><strong>Gas fee reordering (ordering not guaranteed) (2015-2021):</strong>
 Miners typically ordered transactions based on gas fees, with higher-fee transactions getting priority. Users could increase their gas price to improve their chances of earlier inclusion, though this didn't guarantee a specific order.</p>
 </li>
 <li>
-<p><strong>Priority fee reordering (Not guaranteed) (2021-present):</strong>
+<p><strong>Priority fee reordering (ordering not guaranteed) (2021-present):</strong>
 Introduced with EIP-1559 in August 2021, the priority fee allowed users to directly incentivize miners (later validators) to include their transactions. While higher priority fees increased the likelihood of quicker inclusion, they still didn't guarantee a specific order.</p>
 </li>
 <li>
@@ -60,10 +60,10 @@ As MEV concepts expanded beyond Ethereum, other blockchains like Solana develope
 <p>The Block-STM parallel execution engine introduces a paradigm shift in how transactions are processed, significantly impacting MEV extraction:</p>
 <ol>
 <li>
-<p><strong>Dynamic Reordering:</strong> The engine may reorder transactions across one or more blocks to optimize concurrency, as explained in the <a href="https://aptosfoundation.org/whitepaper/aptos-whitepaper_en.pdf" target="_blank" rel="noopener noreferrer">Aptos whitepaper</a>. MEV extractors will need to adapt their strategies to account for both <a href="https://github.com/aptos-foundation/AIPs/blob/main/aips/aip-68.md" target="_blank" rel="noopener noreferrer">sender-aware</a> and <a href="https://github.com/aptos-foundation/AIPs/blob/main/aips/aip-27.md" target="_blank" rel="noopener noreferrer">use-case-aware</a> shuffling, potentially reducing the effectiveness of certain MEV extraction techniques that rely on precise transaction ordering.</p>
+<p><strong>Dynamic Reordering:</strong> The engine may reorder transactions across one or more blocks to optimize concurrency—meaning that the order of transactions might change dynamically between blocks, as explained in the <a href="https://aptosfoundation.org/whitepaper/aptos-whitepaper_en.pdf" target="_blank" rel="noopener noreferrer">Aptos whitepaper</a>. MEV extractors will need to adapt their strategies to account for both <a href="https://github.com/aptos-foundation/AIPs/blob/main/aips/aip-68.md" target="_blank" rel="noopener noreferrer">sender-aware</a> and <a href="https://github.com/aptos-foundation/AIPs/blob/main/aips/aip-27.md" target="_blank" rel="noopener noreferrer">use-case-aware</a> shuffling, potentially reducing the effectiveness of certain MEV extraction techniques that rely on precise transaction ordering.</p>
 </li>
 <li>
-<p><strong>Conflict-Induced re-execution:</strong> When conflicts occur and transactions are re-executed, it can change the state that subsequent transactions interact with, potentially invalidating MEV extraction strategies that rely on a specific state sequence.</p>
+<p><strong>Conflict-Induced re-execution:</strong> When conflicts occur, transactions may be re-executed, altering the state that subsequent transactions interact with and potentially invalidating MEV extraction strategies.</p>
 </li>
 <li>
 <p><strong>Ripple Effect:</strong> When a transaction aborts due to a conflict, all higher transactions in the block are scheduled for <a href="https://stackoverflow.com/questions/77804820/block-stm-why-do-we-need-this-condition-when-a-transaction-aborts-all-higher" target="_blank" rel="noopener noreferrer">re-validation</a>. This cascading effect introduces further unpredictability in the final transaction order and state.</p>
@@ -76,7 +76,7 @@ As MEV concepts expanded beyond Ethereum, other blockchains like Solana develope
 <p><strong>Promoting Fair Markets:</strong> By managing MEV effectively, developers and network architects can <a href="https://chain.link/education-hub/maximal-extractable-value-mev" target="_blank" rel="noopener noreferrer">mitigate economic inefficiencies</a> across DeFi protocols built on Aptos.</p>
 </li>
 <li>
-<p><strong>Improve Validator Revennue:</strong> MEV can significantly boost validator earnings, incentivizing network participation and security. On Ethereum, MEV Boost has <a href="https://everstake.one/blog/double-your-profits-from-eth-staking-mev-boost-guide-for-validators" target="_blank" rel="noopener noreferrer">increased validator revenue by up to 75%</a>. Similarly, on Solana, MEV rewards have become a substantial income source for validators, with the network <a href="https://solanacompass.com/learn/Lightspeed/unpacking-solanas-total-economic-value-dan-smith" target="_blank" rel="noopener noreferrer">earning $8 million in total economic value from tips and transaction fees in a single week</a>.</p>
+<p><strong>Improve Validator Revenue:</strong> MEV can significantly boost validator earnings, incentivizing network participation and security. On Ethereum, MEV Boost has <a href="https://everstake.one/blog/double-your-profits-from-eth-staking-mev-boost-guide-for-validators" target="_blank" rel="noopener noreferrer">increased validator revenue by up to 75%</a>. Similarly, on Solana, MEV rewards have become a substantial income source for validators, with the network <a href="https://solanacompass.com/learn/Lightspeed/unpacking-solanas-total-economic-value-dan-smith" target="_blank" rel="noopener noreferrer">earning $8 million in total economic value from tips and transaction fees in a single week</a>.</p>
 </li>
 </ul>
 <p>As we continue our exploration into MEV infrastructure on Aptos, future discussions will dive into tailored strategies, potential challenges, and innovative solutions to ensure a secure and efficient blockchain environment.</p>]]></content>
