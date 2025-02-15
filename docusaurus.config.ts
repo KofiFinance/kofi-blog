@@ -17,7 +17,7 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'kofi-finance', // Usually your GitHub org/user name.
+  organizationName: 'kofifinance', // Usually your GitHub org/user name.
   projectName: 'kofi-blog', // Usually your repo name.
 
   onBrokenLinks: 'throw',
@@ -49,6 +49,10 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
 
   themeConfig: {
     // Replace with your project's social card
