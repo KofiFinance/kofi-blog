@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkkofi_docs=self.webpackChunkkofi_docs||[]).push([[472],{5513:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"MEV Part 1","permalink":"/mdx-blog-post","unlisted":false,"date":"2025-02-15T00:00:00.000Z"}]}')}}]);

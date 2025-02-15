@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkkofi_docs=self.webpackChunkkofi_docs||[]).push([[905],{7875:a=>{a.exports=JSON.parse('{"tag":{"label":"mev","permalink":"/tags/mev","allTagsPath":"/tags","count":1,"unlisted":false},"listMetadata":{"permalink":"/tags/mev","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
