@@ -22,27 +22,27 @@
 <p>In essence, MEV is extracted through the reordering of transactions within a block, and the methodology of said has evolved over time. Let's take a look at its evolution.</p>
 <ol>
 <li>
-<p>Miner Bribing (2015-2022):
+<p><strong>Miner Bribing (2015-2022):</strong>
 In the early days of Ethereum's Proof of Work era, users could attempt to influence miners to include or order their transactions in specific ways. This was often done through smart contracts that offered additional rewards to miners for favorable transaction placement.</p>
 </li>
 <li>
-<p>Gas fee reordering (Not guaranteed) (2015-2021):
+<p><strong>Gas fee reordering (Not guaranteed) (2015-2021):</strong>
 Miners typically ordered transactions based on gas fees, with higher-fee transactions getting priority. Users could increase their gas price to improve their chances of earlier inclusion, though this didn't guarantee a specific order.</p>
 </li>
 <li>
-<p>Priority fee reordering (Not guaranteed) (2021-present):
+<p><strong>Priority fee reordering (Not guaranteed) (2021-present):</strong>
 Introduced with EIP-1559 in August 2021, the priority fee allowed users to directly incentivize miners (later validators) to include their transactions. While higher priority fees increased the likelihood of quicker inclusion, they still didn't guarantee a specific order.</p>
 </li>
 <li>
-<p>Flashbots / Bundling (2020-present):
+<p><strong>Flashbots / Bundling (2020-present):</strong>
 Flashbots introduced a more sophisticated approach to MEV extraction. It allowed users to submit bundles of transactions with specific ordering requirements, providing a more reliable method for transaction ordering and MEV extraction.</p>
 </li>
 <li>
-<p>MEV on Solana: JITO (2022-present):
+<p><strong>MEV on Solana: JITO (2022-present):</strong>
 As MEV concepts expanded beyond Ethereum, other blockchains like Solana developed their own MEV solutions. JITO on Solana represents an adaptation of MEV extraction techniques to Solana's unique blockchain architecture and consensus mechanism.</p>
 </li>
 <li>
-<p>MEV on Aptos: ???</p>
+<p><strong>MEV on Aptos: ???</strong></p>
 </li>
 </ol>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="aptos-architecture-and-mev-potential">Aptos Architecture and MEV Potential<a href="https://blog.kofi.finance/introduction-to-mev-and-aptos#aptos-architecture-and-mev-potential" class="hash-link" aria-label="Direct link to Aptos Architecture and MEV Potential" title="Direct link to Aptos Architecture and MEV Potential">​</a></h2>
@@ -80,7 +80,7 @@ As MEV concepts expanded beyond Ethereum, other blockchains like Solana develope
 <p><strong>Improve Validator Revennue:</strong> MEV can significantly boost validator earnings, incentivizing network participation and security. On Ethereum, MEV Boost has <a href="https://everstake.one/blog/double-your-profits-from-eth-staking-mev-boost-guide-for-validators" target="_blank" rel="noopener noreferrer">increased validator revenue by up to 75%</a>. Similarly, on Solana, MEV rewards have become a substantial income source for validators, with the network <a href="https://solanacompass.com/learn/Lightspeed/unpacking-solanas-total-economic-value-dan-smith" target="_blank" rel="noopener noreferrer">earning $8 million in total economic value from tips and transaction fees in a single week</a>.</p>
 </li>
 </ul>
-<p>As we continue our exploration into MEV infrastructure on Aptos, future discussions will dive into tailored strategies, potential challenges, and innovative solutions to ensure a secure and efficient blockchain environment. By addressing MEV head-on, Aptos aims to set a new standard for next-generation blockchain platforms.</p>]]></content:encoded>
+<p>As we continue our exploration into MEV infrastructure on Aptos, future discussions will dive into tailored strategies, potential challenges, and innovative solutions to ensure a secure and efficient blockchain environment.</p>]]></content:encoded>
             <category>mev</category>
             <category>aptos</category>
         </item>
