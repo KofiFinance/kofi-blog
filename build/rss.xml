@@ -47,7 +47,7 @@ As MEV concepts expanded beyond Ethereum, other blockchains like Solana develope
 </ol>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="aptos-architecture-and-mev-potential">Aptos Architecture and MEV Potential<a href="https://blog.kofi.finance/introduction-to-mev-and-aptos#aptos-architecture-and-mev-potential" class="hash-link" aria-label="Direct link to Aptos Architecture and MEV Potential" title="Direct link to Aptos Architecture and MEV Potential">​</a></h2>
 <p>The architectural design of Aptos, particularly its BFT consensus mechanism and Block-STM parallel execution engine, introduces significant challenges and changes to how MEV (Maximal Extractable Value) can be extracted. These design choices fundamentally alter the landscape of MEV extraction compared to traditional blockchain architectures.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="aptosbft-consensus-and-mev">AptosBFT Consensus and MEV<a href="https://blog.kofi.finance/introduction-to-mev-and-aptos#aptosbft-consensus-and-mev" class="hash-link" aria-label="Direct link to AptosBFT Consensus and MEV" title="Direct link to AptosBFT Consensus and MEV">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="aptosbft-consensus-and-mev">AptosBFT Consensus and MEV<a href="https://blog.kofi.finance/introduction-to-mev-and-aptos#aptosbft-consensus-and-mev" class="hash-link" aria-label="Direct link to AptosBFT Consensus and MEV" title="Direct link to AptosBFT Consensus and MEV">​</a></h3>
 <p>Aptos uses AptosBFT, a consensus algorithm based on HotStuff, which implements a round-by-round consensus and block chaining mechanism according to <a href="https://chorus.one/articles/understanding-aptos-how-its-technical-architecture-and-modular-design-transcends-monolithic-chains" target="_blank" rel="noopener noreferrer">Chorus One's analysis</a>. This approach has several implications for MEV:</p>
 <ol>
 <li>
@@ -57,7 +57,7 @@ As MEV concepts expanded beyond Ethereum, other blockchains like Solana develope
 <p><strong>Validator Rotation:</strong> The consensus mechanism rotates proposers (aka validator leaders), making it more challenging for a single entity to consistently control transaction ordering.</p>
 </li>
 </ol>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="block-stm-parallel-execution-and-mev">Block-STM Parallel Execution and MEV<a href="https://blog.kofi.finance/introduction-to-mev-and-aptos#block-stm-parallel-execution-and-mev" class="hash-link" aria-label="Direct link to Block-STM Parallel Execution and MEV" title="Direct link to Block-STM Parallel Execution and MEV">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="block-stm-parallel-execution-and-mev">Block-STM Parallel Execution and MEV<a href="https://blog.kofi.finance/introduction-to-mev-and-aptos#block-stm-parallel-execution-and-mev" class="hash-link" aria-label="Direct link to Block-STM Parallel Execution and MEV" title="Direct link to Block-STM Parallel Execution and MEV">​</a></h3>
 <p>The Block-STM parallel execution engine introduces a paradigm shift in how transactions are processed, significantly impacting MEV extraction:</p>
 <ol>
 <li>

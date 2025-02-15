@@ -39,7 +39,7 @@ In essence, MEV is extracted through the reordering of transactions within a blo
 
 The architectural design of Aptos, particularly its BFT consensus mechanism and Block-STM parallel execution engine, introduces significant challenges and changes to how MEV (Maximal Extractable Value) can be extracted. These design choices fundamentally alter the landscape of MEV extraction compared to traditional blockchain architectures.
 
-## AptosBFT Consensus and MEV
+### AptosBFT Consensus and MEV
 
 Aptos uses AptosBFT, a consensus algorithm based on HotStuff, which implements a round-by-round consensus and block chaining mechanism according to [Chorus One's analysis](https://chorus.one/articles/understanding-aptos-how-its-technical-architecture-and-modular-design-transcends-monolithic-chains). This approach has several implications for MEV:
 
@@ -47,7 +47,7 @@ Aptos uses AptosBFT, a consensus algorithm based on HotStuff, which implements a
 
 2. **Validator Rotation:** The consensus mechanism rotates proposers (aka validator leaders), making it more challenging for a single entity to consistently control transaction ordering.
 
-## Block-STM Parallel Execution and MEV
+### Block-STM Parallel Execution and MEV
 
 The Block-STM parallel execution engine introduces a paradigm shift in how transactions are processed, significantly impacting MEV extraction:
 
