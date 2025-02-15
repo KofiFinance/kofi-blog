@@ -1,0 +1,9 @@
+kofi:
+  name: Kofi Finance
+  title: Kofi Finance
+  url: https://kofi.finance
+  image_url: https://github.com/wagmitt/branding/blob/main/logo.png?raw=true
+  page: true
+  socials:
+    x: kofi_finance
+    github: kofi_finance
