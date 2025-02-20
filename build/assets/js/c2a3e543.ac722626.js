@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkkofi_docs=self.webpackChunkkofi_docs||[]).push([[8885],{2937:s=>{s.exports=JSON.parse('{"tags":[{"label":"mev","permalink":"/tags/mev","count":2},{"label":"aptos","permalink":"/tags/aptos","count":2}]}')}}]);

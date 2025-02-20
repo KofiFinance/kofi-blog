@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://blog.kofi.finance/</id>
+    <title>Kofi Finance Blog</title>
+    <updated>2025-02-20T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://blog.kofi.finance/"/>
+    <subtitle>Kofi Finance Blog</subtitle>
+    <icon>https://blog.kofi.finance/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Transaction Shuffling and MEV on Aptos]]></title>
+        <id>https://blog.kofi.finance/transaction-shuffling-and-mev-on-aptos</id>
+        <link href="https://blog.kofi.finance/transaction-shuffling-and-mev-on-aptos"/>
+        <updated>2025-02-20T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Transaction lifecycle on Aptos]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="transaction-lifecycle-on-aptos">Transaction lifecycle on Aptos<a href="https://blog.kofi.finance/transaction-shuffling-and-mev-on-aptos#transaction-lifecycle-on-aptos" class="hash-link" aria-label="Direct link to Transaction lifecycle on Aptos" title="Direct link to Transaction lifecycle on Aptos">​</a></h2>
+<p>On Aptos, transactions follow a structured lifecycle to achieve finality. Initially, transactions are submitted to full nodes, which propagate them to validator nodes. Within the consensus layer—powered by AptosBFT—transactions are collected into a proposed block and reordered using a pre-execution shuffling mechanism to balance the load and enhance fairness. Once consensus is reached among validators, the agreed-upon block, containing the shuffled transaction order and cryptographic proofs, is finalized. The execution engine then processes these transactions, leveraging Block-STM for parallel execution, and updates the ledger, achieving rapid finality with robust security. This design integrates shuffling within consensus to determine the transaction order, followed by efficient execution and ledger confirmation.</p>
+<p><strong>Pre-Execution Shuffling</strong></p>
+<p>In between consensus and execution, Aptos uses a pre-execution shuffling mechanism to order transactions. This mechanism is used to:</p>
+<ul>
+<li><strong>Balance the Load:</strong> Prevent a burst of transactions from the same sender or of the same type.</li>
+</ul>
+<p>As noted in <a href="https://github.com/aptos-foundation/AIPs/blob/main/aips/aip-68.md" target="_blank" rel="noopener noreferrer">AIP-68</a>:</p>
+<blockquote>
+<p>"...This (Long block latency) is expected to happen in this particular situation where spikes of conflicting/sequential transactions from a popular module (smart contract) dominates the traffic"</p>
+</blockquote>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="how-transaction-shuffling-works-on-aptos">How transaction shuffling works on Aptos<a href="https://blog.kofi.finance/transaction-shuffling-and-mev-on-aptos#how-transaction-shuffling-works-on-aptos" class="hash-link" aria-label="Direct link to How transaction shuffling works on Aptos" title="Direct link to How transaction shuffling works on Aptos">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="example-1">Example 1<a href="https://blog.kofi.finance/transaction-shuffling-and-mev-on-aptos#example-1" class="hash-link" aria-label="Direct link to Example 1" title="Direct link to Example 1">​</a></h3>
+<p><img decoding="async" loading="lazy" alt="Transaction Shuffling on Aptos" src="https://blog.kofi.finance/assets/images/shuffling-1.drawio-1dd271386ef7d0953bd8e6fe733b11c1.svg" class="img_ev3q"></p>
+<p>The diagram above illustrates how transaction shuffling works in practice. Let's break it down:</p>
+<ol>
+<li>
+<p><strong>Original Transaction Order:</strong></p>
+<ul>
+<li>The top row shows transactions in their original order (0-9)</li>
+<li>Transactions of the same sender have the same letter</li>
+<li>Transactions of the same use case (smart contract) have the same color</li>
+<li>Each circle represents a transaction, with numbers indicating their original position</li>
+</ul>
+</li>
+<li>
+<p><strong>Shuffled Transaction Order:</strong></p>
+<ul>
+<li>The bottom row shows transactions after shuffling</li>
+<li>The numbers below show their new positions</li>
+<li>With <code>sender_spread_factor = 1</code>, transactions from the same sender are spread apart</li>
+<li>Notice how green "A" transactions that were originally clustered are now distributed</li>
+</ul>
+</li>
+<li>
+<p><strong>Shuffling Parameters:</strong></p>
+<ul>
+<li><code>sender_spread_factor = 1</code>: Spreads transactions from the same sender</li>
+<li><code>platform_use_case_spread_factor = 0</code>: No additional delay for platform transactions</li>
+<li><code>user_use_case_spread_factor = 0</code>: No additional delay for user transactions</li>
+</ul>
+</li>
+<li>
+<p><strong>Result:</strong></p>
+<ul>
+<li>Transactions from sender A (green) are spread out evenly</li>
+<li>Transactions from sender B (blue) and C (orange) maintain relative ordering</li>
+<li>Each transaction is shifted by 1 slot relative to others from the same sender</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="example-2">Example 2<a href="https://blog.kofi.finance/transaction-shuffling-and-mev-on-aptos#example-2" class="hash-link" aria-label="Direct link to Example 2" title="Direct link to Example 2">​</a></h3>
+<p><img decoding="async" loading="lazy" alt="Transaction Shuffling on Aptos" src="https://blog.kofi.finance/assets/images/shuffling-2.drawio-7d24466d709aa486686957e04f272456.svg" class="img_ev3q"></p>
+<p>Let's analyze this diagram which shows a more complex shuffling scenario:</p>
+<ol>
+<li>
+<p><strong>Original Transaction Order:</strong></p>
+<ul>
+<li>Similar to Example 1, transactions are shown with sender (letter) and use case (color)</li>
+</ul>
+</li>
+<li>
+<p><strong>Shuffling Parameters:</strong></p>
+<ul>
+<li><code>sender_spread_factor = 2</code>: Spreads transactions from the same sender further apart</li>
+<li><code>platform_use_case_spread_factor = 0</code>: No additional delay for platform transactions</li>
+<li><code>user_use_case_spread_factor = 1</code>: Slight delay for user transactions</li>
+</ul>
+</li>
+<li>
+<p><strong>Key Effects:</strong></p>
+<ul>
+<li>"Same context transactions are spaced by 1" - Transactions with the same use case maintain a minimum spacing</li>
+<li>"Same sender transactions are spread by at least 2 slots" - Due to <code>sender_spread_factor</code></li>
+<li>"<code>use_case_spread</code> takes precedence over <code>sender_spread</code>" - The use case spacing is applied first</li>
+<li>Some sender spreads "could not be fulfilled" due to competing constraints</li>
+</ul>
+</li>
+</ol>
+<p>This example demonstrates how multiple spread factors interact and sometimes compete, leading to a complex but deterministic reordering that balances various constraints.</p>
+<p><em>More examples can be found in test cases in the <a href="https://github.com/aptos-labs/aptos-core/blob/51e3afbaf4645c7a8dd03b94e47555c0dbed0366/consensus/src/transaction_shuffler/use_case_aware/tests/manual.rs" target="_blank" rel="noopener noreferrer">Aptos codebase</a></em></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="live-parameters">Live Parameters<a href="https://blog.kofi.finance/transaction-shuffling-and-mev-on-aptos#live-parameters" class="hash-link" aria-label="Direct link to Live Parameters" title="Direct link to Live Parameters">​</a></h2>
+<p>The current live parameters for the transaction shuffler are:</p>
+<table><thead><tr><th>Parameter</th><th>Value</th><th>Effect</th></tr></thead><tbody><tr><td>sender_spread_factor</td><td>32</td><td>Spreads transactions from the same sender, with potential saturation</td></tr><tr><td>platform_use_case_spread_factor</td><td>0</td><td>No delay for platform transactions, prioritizing system operations</td></tr><tr><td>user_use_case_spread_factor</td><td>4</td><td>Spaces out user transactions to prevent dominance in order</td></tr></tbody></table>
+<p><a href="https://github.com/aptos-labs/aptos-core/blob/51e3afbaf4645c7a8dd03b94e47555c0dbed0366/types/src/on_chain_config/execution_config.rs#L159-L160" target="_blank" rel="noopener noreferrer">Code</a></p>
+<div class="language-rust codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#9CDCFE;--prism-background-color:#1E1E1E"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-rust codeBlock_bY9V thin-scrollbar" style="color:#9CDCFE;background-color:#1E1E1E"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#9CDCFE"><span class="token keyword" style="color:rgb(86, 156, 214)">pub</span><span class="token plain"> </span><span class="token keyword" style="color:rgb(86, 156, 214)">fn</span><span class="token plain"> </span><span class="token function-definition function" style="color:rgb(220, 220, 170)">default_for_genesis</span><span class="token punctuation" style="color:rgb(212, 212, 212)">(</span><span class="token punctuation" style="color:rgb(212, 212, 212)">)</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(212, 212, 212)">-&gt;</span><span class="token plain"> </span><span class="token keyword" style="color:rgb(86, 156, 214)">Self</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(212, 212, 212)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#9CDCFE"><span class="token plain">    </span><span class="token class-name" style="color:rgb(78, 201, 176)">TransactionShufflerType</span><span class="token punctuation" style="color:rgb(212, 212, 212)">::</span><span class="token class-name" style="color:rgb(78, 201, 176)">UseCaseAware</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(212, 212, 212)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#9CDCFE"><span class="token plain">        sender_spread_factor</span><span class="token punctuation" style="color:rgb(212, 212, 212)">:</span><span class="token plain"> </span><span class="token number" style="color:rgb(181, 206, 168)">32</span><span class="token punctuation" style="color:rgb(212, 212, 212)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#9CDCFE"><span class="token plain">        platform_use_case_spread_factor</span><span class="token punctuation" style="color:rgb(212, 212, 212)">:</span><span class="token plain"> </span><span class="token number" style="color:rgb(181, 206, 168)">0</span><span class="token punctuation" style="color:rgb(212, 212, 212)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#9CDCFE"><span class="token plain">        user_use_case_spread_factor</span><span class="token punctuation" style="color:rgb(212, 212, 212)">:</span><span class="token plain"> </span><span class="token number" style="color:rgb(181, 206, 168)">4</span><span class="token punctuation" style="color:rgb(212, 212, 212)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#9CDCFE"><span class="token plain">    </span><span class="token punctuation" style="color:rgb(212, 212, 212)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#9CDCFE"><span class="token plain"></span><span class="token punctuation" style="color:rgb(212, 212, 212)">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="implications-for-mev-strategies">Implications for MEV Strategies<a href="https://blog.kofi.finance/transaction-shuffling-and-mev-on-aptos#implications-for-mev-strategies" class="hash-link" aria-label="Direct link to Implications for MEV Strategies" title="Direct link to Implications for MEV Strategies">​</a></h2>
+<p>Aptos’s transaction shuffling mechanism fundamentally alters the landscape for Maximum Extractable Value (MEV) strategies by introducing dynamic, consensus-driven reordering before execution, building on an initial gas-based queue. This design imposes significant challenges for MEV extractors:</p>
+<ul>
+<li>
+<p><strong>Reduced Predictability in Ordering:</strong> Transactions enter the consensus phase with an initial order based on gas prices, reflecting submitter priority. However, the <code>UseCaseAware</code> shuffler, with parameters like sender_spread_factor (32) and <code>user_use_case_spread_factor</code> (4), then disperses these transactions across the block based on sender and use-case constraints. This interplay transforms the predictable gas-based sequence into a complex, volume-dependent order, making it harder for MEV actors to anticipate final positions.</p>
+</li>
+<li>
+<p><strong>Disrupted Concentration and Fairness:</strong> While gas offers a starting advantage, shuffling prevents bursts of related transactions (e.g., multiple trades from one sender), diluting opportunities for MEV tactics like front-running or arbitrage. This fosters a more equitable market by reducing the dominance of high-gas bidders who might otherwise cluster transactions for profit.</p>
+<p>The shuffling process—integrated into the AptosBFT consensus layer—begins with a gas-prioritized queue, then applies use-case prioritization (e.g., spacing user transactions by 4 slots) and sender-specific spreads (e.g., up to 32 slots). This layered approach, backed by a priority queue system, evolves transaction ordering beyond simple gas auctions. For instance, a bot attempting to front-run a large decentralized exchange trade with a high gas bid might still lose its edge if shuffling spreads its transaction apart from the target. While this enhances fairness and load balancing, it may slightly delay time-sensitive trades initially favored by gas, a trade-off for resilience.</p>
+</li>
+</ul>
+<p>MEV strategies must now adapt, potentially shifting from exploiting gas-driven order to analyzing shuffle patterns across blocks. As MEV techniques advance, Aptos’s tunable shuffling parameters, layered atop gas prioritization, will be key to sustaining an equitable ecosystem, indirectly bolstering network integrity by curbing manipulative reorderings.</p>]]></content>
+        <author>
+            <name>Kofi Finance</name>
+            <uri>https://kofi.finance</uri>
+        </author>
+        <category label="mev" term="mev"/>
+        <category label="aptos" term="aptos"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[An Introduction to MEV and Its Impact on Aptos]]></title>
+        <id>https://blog.kofi.finance/introduction-to-mev-and-aptos</id>
+        <link href="https://blog.kofi.finance/introduction-to-mev-and-aptos"/>
+        <updated>2025-02-15T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Maximal Extractable Value (MEV) has become a crucial concept in the blockchain world, with implications that are particularly relevant for emerging networks like Aptos. As the blockchain ecosystem evolves, understanding MEV is essential to exploring resilient and innovative infrastructure on platforms that are shaping the future — and Aptos is at the forefront.]]></summary>
+        <content type="html"><![CDATA[<p>Maximal Extractable Value (MEV) has become a crucial concept in the blockchain world, with implications that are particularly relevant for emerging networks like Aptos. As the blockchain ecosystem evolves, understanding MEV is essential to exploring resilient and innovative infrastructure on platforms that are shaping the future — and Aptos is at the forefront.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="understanding-mev">Understanding MEV<a href="https://blog.kofi.finance/introduction-to-mev-and-aptos#understanding-mev" class="hash-link" aria-label="Direct link to Understanding MEV" title="Direct link to Understanding MEV">​</a></h2>
+<p><a href="https://chain.link/education-hub/maximal-extractable-value-mev" target="_blank" rel="noopener noreferrer">Maximal Extractable Value</a> refers to the maximum value that can be extracted from block production beyond standard block rewards and gas fees. This potential is realized when block producers — whether they are miners or validators — <strong>manipulate the ordering, inclusion, or exclusion of transactions in a block to secure additional profit.</strong></p>
+<p>Originally coined as "Miner Extractable Value" in 2014 by a pseudonymous trader, this concept predicted that miners could leverage <a href="https://www.coingecko.com/learn/what-is-mev-maximal-extractable-value-crypto" target="_blank" rel="noopener noreferrer">transaction ordering</a> for gain. It was later formalized in the seminal 2019 research paper "Flash Boys 2.0," which drew parallels between blockchain transaction manipulation and the practices of high-frequency trading in traditional finance.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="a-brief-timeline-for-the-evolution-of-mev">A brief timeline for the evolution of MEV<a href="https://blog.kofi.finance/introduction-to-mev-and-aptos#a-brief-timeline-for-the-evolution-of-mev" class="hash-link" aria-label="Direct link to A brief timeline for the evolution of MEV" title="Direct link to A brief timeline for the evolution of MEV">​</a></h2>
+<p>In essence, MEV is extracted through the reordering of transactions within a block, and the methodology of said has evolved over time. Let's take a look at its evolution.</p>
+<ol>
+<li>
+<p><strong>Miner Bribing (2015-2022):</strong>
+In the early days of Ethereum's Proof of Work era, users could attempt to influence miners to include or order their transactions in specific ways. This was often done through smart contracts that offered additional rewards to miners for favorable transaction placement.</p>
+</li>
+<li>
+<p><strong>Gas fee reordering (ordering not guaranteed) (2015-2021):</strong>
+Miners typically ordered transactions based on gas fees, with higher-fee transactions getting priority. Users could increase their gas price to improve their chances of earlier inclusion, though this didn't guarantee a specific order.</p>
+</li>
+<li>
+<p><strong>Priority fee reordering (ordering not guaranteed) (2021-present):</strong>
+Introduced with EIP-1559 in August 2021, the priority fee allowed users to directly incentivize miners (later validators) to include their transactions. While higher priority fees increased the likelihood of quicker inclusion, they still didn't guarantee a specific order.</p>
+</li>
+<li>
+<p><strong>Flashbots / Bundling (2020-present):</strong>
+Flashbots introduced a more sophisticated approach to MEV extraction. It allowed users to submit bundles of transactions with specific ordering requirements, providing a more reliable method for transaction ordering and MEV extraction.</p>
+</li>
+<li>
+<p><strong>MEV on Solana: JITO (2022-present):</strong>
+As MEV concepts expanded beyond Ethereum, other blockchains like Solana developed their own MEV solutions. JITO on Solana represents an adaptation of MEV extraction techniques to Solana's unique blockchain architecture and consensus mechanism.</p>
+</li>
+<li>
+<p><strong>MEV on Aptos: ???</strong></p>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="aptos-architecture-and-mev-potential">Aptos Architecture and MEV Potential<a href="https://blog.kofi.finance/introduction-to-mev-and-aptos#aptos-architecture-and-mev-potential" class="hash-link" aria-label="Direct link to Aptos Architecture and MEV Potential" title="Direct link to Aptos Architecture and MEV Potential">​</a></h2>
+<p>The architectural design of Aptos, particularly its BFT consensus mechanism and Block-STM parallel execution engine, introduces significant challenges and changes to how MEV (Maximal Extractable Value) can be extracted. These design choices fundamentally alter the landscape of MEV extraction compared to traditional blockchain architectures.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="aptosbft-consensus-and-mev">AptosBFT Consensus and MEV<a href="https://blog.kofi.finance/introduction-to-mev-and-aptos#aptosbft-consensus-and-mev" class="hash-link" aria-label="Direct link to AptosBFT Consensus and MEV" title="Direct link to AptosBFT Consensus and MEV">​</a></h3>
+<p>Aptos uses AptosBFT, a consensus algorithm based on HotStuff, which implements a round-by-round consensus and block chaining mechanism according to <a href="https://chorus.one/articles/understanding-aptos-how-its-technical-architecture-and-modular-design-transcends-monolithic-chains" target="_blank" rel="noopener noreferrer">Chorus One's analysis</a>. This approach has several implications for MEV:</p>
+<ol>
+<li>
+<p><strong>Faster Finality:</strong> <a href="https://chorus.one/articles/understanding-aptos-how-its-technical-architecture-and-modular-design-transcends-monolithic-chains" target="_blank" rel="noopener noreferrer">AptosBFT's design allows for quicker transaction finality</a> <a href="https://forum.aptosfoundation.org/t/aptos-network-achieves-sub-second-latency/9475" target="_blank" rel="noopener noreferrer">~0.9s</a>, potentially reducing the window of opportunity for MEV extraction.</p>
+</li>
+<li>
+<p><strong>Validator Rotation:</strong> The consensus mechanism rotates proposers (aka validator leaders), making it more challenging for a single entity to consistently control transaction ordering.</p>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="block-stm-parallel-execution-and-mev">Block-STM Parallel Execution and MEV<a href="https://blog.kofi.finance/introduction-to-mev-and-aptos#block-stm-parallel-execution-and-mev" class="hash-link" aria-label="Direct link to Block-STM Parallel Execution and MEV" title="Direct link to Block-STM Parallel Execution and MEV">​</a></h3>
+<p>The Block-STM parallel execution engine introduces a paradigm shift in how transactions are processed, significantly impacting MEV extraction:</p>
+<ol>
+<li>
+<p><strong>Dynamic Reordering:</strong> The engine may reorder transactions across one or more blocks to optimize concurrency—meaning that the order of transactions might change dynamically between blocks, as explained in the <a href="https://aptosfoundation.org/whitepaper/aptos-whitepaper_en.pdf" target="_blank" rel="noopener noreferrer">Aptos whitepaper</a>. MEV extractors will need to adapt their strategies to account for both <a href="https://github.com/aptos-foundation/AIPs/blob/main/aips/aip-68.md" target="_blank" rel="noopener noreferrer">sender-aware</a> and <a href="https://github.com/aptos-foundation/AIPs/blob/main/aips/aip-27.md" target="_blank" rel="noopener noreferrer">use-case-aware</a> shuffling, potentially reducing the effectiveness of certain MEV extraction techniques that rely on precise transaction ordering.</p>
+</li>
+<li>
+<p><strong>Conflict-Induced re-execution:</strong> When conflicts occur, transactions may be re-executed, altering the state that subsequent transactions interact with and potentially invalidating MEV extraction strategies.</p>
+</li>
+<li>
+<p><strong>Ripple Effect:</strong> When a transaction aborts due to a conflict, all higher transactions in the block are scheduled for <a href="https://stackoverflow.com/questions/77804820/block-stm-why-do-we-need-this-condition-when-a-transaction-aborts-all-higher" target="_blank" rel="noopener noreferrer">re-validation</a>. This cascading effect introduces further unpredictability in the final transaction order and state.</p>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="why-mev-matters-for-aptos">Why MEV Matters for Aptos<a href="https://blog.kofi.finance/introduction-to-mev-and-aptos#why-mev-matters-for-aptos" class="hash-link" aria-label="Direct link to Why MEV Matters for Aptos" title="Direct link to Why MEV Matters for Aptos">​</a></h2>
+<p>Understanding and proactively managing MEV is critical for ensuring the success and integrity of the Aptos ecosystem:</p>
+<ul>
+<li>
+<p><strong>Promoting Fair Markets:</strong> By managing MEV effectively, developers and network architects can <a href="https://chain.link/education-hub/maximal-extractable-value-mev" target="_blank" rel="noopener noreferrer">mitigate economic inefficiencies</a> across DeFi protocols built on Aptos.</p>
+</li>
+<li>
+<p><strong>Improve Validator Revenue:</strong> MEV can significantly boost validator earnings, incentivizing network participation and security. On Ethereum, MEV Boost has <a href="https://everstake.one/blog/double-your-profits-from-eth-staking-mev-boost-guide-for-validators" target="_blank" rel="noopener noreferrer">increased validator revenue by up to 75%</a>. Similarly, on Solana, MEV rewards have become a substantial income source for validators, with the network <a href="https://solanacompass.com/learn/Lightspeed/unpacking-solanas-total-economic-value-dan-smith" target="_blank" rel="noopener noreferrer">earning $8 million in total economic value from tips and transaction fees in a single week</a>.</p>
+</li>
+</ul>
+<p>As we continue our exploration into MEV infrastructure on Aptos, future discussions will dive into tailored strategies, potential challenges, and innovative solutions to ensure a secure and efficient blockchain environment.</p>]]></content>
+        <author>
+            <name>Kofi Finance</name>
+            <uri>https://kofi.finance</uri>
+        </author>
+        <category label="mev" term="mev"/>
+        <category label="aptos" term="aptos"/>
+    </entry>
+</feed>
