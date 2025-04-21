@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkkofi_docs=self.webpackChunkkofi_docs||[]).push([[8885],{2937:a=>{a.exports=JSON.parse('{"tags":[{"label":"aptos","permalink":"/tags/aptos","count":3},{"label":"validator","permalink":"/tags/validator","count":1},{"label":"mev","permalink":"/tags/mev","count":3}]}')}}]);

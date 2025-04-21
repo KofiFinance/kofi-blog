@@ -2,11 +2,52 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.kofi.finance/</id>
     <title>Kofi Finance Blog</title>
-    <updated>2025-02-20T00:00:00.000Z</updated>
+    <updated>2025-04-21T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.kofi.finance/"/>
     <subtitle>Kofi Finance Blog</subtitle>
     <icon>https://blog.kofi.finance/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[AIP-119 and the Future of Validator Economics on Aptos]]></title>
+        <id>https://blog.kofi.finance/aip-119-and-the-future-of-validator-economics-on-aptos</id>
+        <link href="https://blog.kofi.finance/aip-119-and-the-future-of-validator-economics-on-aptos"/>
+        <updated>2025-04-21T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Introduction]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="introduction">Introduction<a href="https://blog.kofi.finance/aip-119-and-the-future-of-validator-economics-on-aptos#introduction" class="hash-link" aria-label="Direct link to Introduction" title="Direct link to Introduction">​</a></h2>
+<p>As the founder of Kofi Finance, a liquid staking platform on the Aptos blockchain, I enthusiastically support AIP-119, which proposes reducing the APT staking reward rate from approximately 7% to 3.79% over six months. Detailed in the Aptos Foundation's <a href="https://github.com/aptos-foundation/AIPs/issues/587" target="_blank" rel="noopener noreferrer">GitHub issue #587</a>, this visionary proposal enhances capital efficiency by prioritizing DeFi and infrastructure, aligning Aptos with leading layer-1 blockchains like Ethereum and Solana. While it presents challenges for smaller validators, we see it as a transformative opportunity to innovate. At Kofi Finance, we're committed to empowering validators with MEV-boosted yields and diverse revenue streams, leveraging our MEV infrastructure to deliver superior returns.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-vision-of-aip-119">The Vision of AIP-119<a href="https://blog.kofi.finance/aip-119-and-the-future-of-validator-economics-on-aptos#the-vision-of-aip-119" class="hash-link" aria-label="Direct link to The Vision of AIP-119" title="Direct link to The Vision of AIP-119">​</a></h2>
+<p><a href="https://github.com/aptos-foundation/AIPs/blob/main/aips/aip-119.md" target="_blank" rel="noopener noreferrer">AIP-119</a> outlines a 1% monthly reduction in staking rewards over three months, with a six-month implementation to foster community collaboration. The current 7% expansion rate limits capital flow into high-impact areas like DeFi, restaking, and infrastructure (e.g., RPC, indexing, MEV). The target 3.79% staking reward encourages more network activity by encouraging participants to explore innovative opportunities that drive network growth, instead of just parking all their APT for "safe-yields"</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="challenges-and-opportunities-for-smaller-validators">Challenges and Opportunities for Smaller Validators<a href="https://blog.kofi.finance/aip-119-and-the-future-of-validator-economics-on-aptos#challenges-and-opportunities-for-smaller-validators" class="hash-link" aria-label="Direct link to Challenges and Opportunities for Smaller Validators" title="Direct link to Challenges and Opportunities for Smaller Validators">​</a></h2>
+<p>We recognize that the reduction in staking rewards poses a challenge for smaller validators, who may struggle to maintain profitability without the scale of larger players.</p>
+<p>To quantify this, we use the formula:</p>
+<p>with a validator cost of $35,000 per year as per the AIP-119 document. Below, we calculate profits for validators with 1M and 3M APT staked at APT prices of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mo separator="true">,</mo></mrow><annotation encoding="application/x-tex">5, </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em"></span><span class="mord">5</span><span class="mpunct">,</span></span></span></span>8, and $10, comparing the current 7% APR, proposed 3.79% APR, and a boosted 12% APR achievable through Kofi Finance's MEV infrastructure:</p>
+<table><thead><tr><th>Stake Delegated</th><th>APT Price</th><th>Profit at 7% APR</th><th>Profit at 3.79% APR</th><th>Profit at 12% APR (Kofi MEV)</th></tr></thead><tbody><tr><td>1M APT</td><td>$5</td><td>-17,500</td><td>-16,050</td><td>25,000</td></tr><tr><td>1M APT</td><td>$8</td><td>21,000</td><td>-4,680</td><td>61,000</td></tr><tr><td>1M APT</td><td>$10</td><td>35,000</td><td>2,900</td><td>85,000</td></tr><tr><td>3M APT</td><td>$5</td><td>40,000</td><td>21,850</td><td>145,000</td></tr><tr><td>3M APT</td><td>$8</td><td>145,000</td><td>90,960</td><td>265,000</td></tr><tr><td>3M APT</td><td>$10</td><td>205,000</td><td>128,700</td><td>325,000</td></tr></tbody></table>
+<p>At 3.79% APR, validators with 1M APT face losses unless APT prices exceed $9.24, while those with 3M APT remain profitable but with reduced margins. In contrast, Kofi's MEV infrastructure at 12% APR delivers substantial profits across all scenarios, turning losses into gains for 1M APT validators (e.g., $25,000 profit at $5 APT price) and significantly enhancing returns for 3M APT validators. This challenge could lead to validator exits, impacting decentralization, but we view it as a catalyst for positive transformation. Smaller validators are vital to the network's diversity and security, and with targeted support, we're confident they can excel.</p>
+<p>At Kofi Finance, we're inspired to empower smaller validators through our liquid staking protocol. By delivering MEV-boosted yields, as demonstrated in the table, and pioneering new revenue streams, we aim to ensure all validators thrive in Aptos' evolving ecosystem. The Foundation's community-driven approach, combined with our innovative strategies, sets the stage for a vibrant future.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="a-call-for-a-stake-matching-program">A Call for a Stake-Matching Program<a href="https://blog.kofi.finance/aip-119-and-the-future-of-validator-economics-on-aptos#a-call-for-a-stake-matching-program" class="hash-link" aria-label="Direct link to A Call for a Stake-Matching Program" title="Direct link to A Call for a Stake-Matching Program">​</a></h2>
+<p>To fully realize AIP-119's potential, we urge the Aptos Foundation to enhance its community validator program with a stake-matching initiative. We propose matching delegated stake for smaller validators, doubling their staked APT up to 3M APT. For a 1M APT validator, an additional 1M APT increases their stake to 2M APT, boosting profit from a $16,050 loss to a $2,900 gain at $5 APT price and 3.79% APR.</p>
+<p>This program would:</p>
+<ul>
+<li><strong>Strengthen Decentralization</strong>: Supporting smaller validators ensures a diverse validator set, reinforcing Aptos' decentralized foundation.</li>
+<li><strong>Inspire Participation</strong>: Matching stake lowers barriers, inviting new validators to enrich our community.</li>
+<li><strong>Better Governance</strong>: Empowering smaller validators fosters trust and collaboration, aligning with Aptos' inclusive governance.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="new-revenue-streams-fueling-validator-success">New Revenue Streams: Fueling Validator Success<a href="https://blog.kofi.finance/aip-119-and-the-future-of-validator-economics-on-aptos#new-revenue-streams-fueling-validator-success" class="hash-link" aria-label="Direct link to New Revenue Streams: Fueling Validator Success" title="Direct link to New Revenue Streams: Fueling Validator Success">​</a></h2>
+<p>We're thrilled by AIP-119's push toward a dynamic economy, opening exciting avenues for validators to offset reduced rewards. At Kofi Finance, we're leading with:</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="1-mev-capture">1. MEV Capture<a href="https://blog.kofi.finance/aip-119-and-the-future-of-validator-economics-on-aptos#1-mev-capture" class="hash-link" aria-label="Direct link to 1. MEV Capture" title="Direct link to 1. MEV Capture">​</a></h3>
+<p>Our MEV infrastructure, leveraging insights from our research with Aptos core engineers, enables validators to profit from transaction ordering.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="2-transaction-tips">2. Transaction Tips<a href="https://blog.kofi.finance/aip-119-and-the-future-of-validator-economics-on-aptos#2-transaction-tips" class="hash-link" aria-label="Direct link to 2. Transaction Tips" title="Direct link to 2. Transaction Tips">​</a></h3>
+<p>We see tips for prioritized processing as a key revenue stream. Inspired by Ethereum's EIP-1559, we're developing tip-sharing in our protocol, distributing earnings to boost yields for validators and stakers, enhancing our platform's appeal.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="our-role-at-kofi-finance">Our Role at Kofi Finance<a href="https://blog.kofi.finance/aip-119-and-the-future-of-validator-economics-on-aptos#our-role-at-kofi-finance" class="hash-link" aria-label="Direct link to Our Role at Kofi Finance" title="Direct link to Our Role at Kofi Finance">​</a></h2>
+<p>Our liquid staking protocol, built by a team with expertise in MEV, DeFi and liquid staking, delivers MEV-boosted yields via kAPT and stkAPT. Partnerships with Tapp Exchange, Aries Markets, Joule, and Hyperfluid amplify returns, while our Discord community fosters collaboration. With mainnet deployment, audits with Zenith and Ottersec, and ongoing MEV research, we're aligned with Aptos' vision. By offering tips, DeFi rewards, and infrastructure services, we aim to make Kofi Finance the premier liquid staking platform, delivering yields exceeding 3.79%.</p>]]></content>
+        <author>
+            <name>0xwagmitt</name>
+            <uri>https://kofi.finance</uri>
+        </author>
+        <category label="aptos" term="aptos"/>
+        <category label="validator" term="validator"/>
+        <category label="mev" term="mev"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Transaction Shuffling and MEV on Aptos]]></title>
         <id>https://blog.kofi.finance/transaction-shuffling-and-mev-on-aptos</id>
@@ -120,16 +161,16 @@
         <category label="aptos" term="aptos"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[An Introduction to MEV and Its Impact on Aptos]]></title>
-        <id>https://blog.kofi.finance/introduction-to-mev-and-aptos</id>
-        <link href="https://blog.kofi.finance/introduction-to-mev-and-aptos"/>
+        <title type="html"><![CDATA[Predictive MEV on Aptos]]></title>
+        <id>https://blog.kofi.finance/predictive-mev-on-aptos</id>
+        <link href="https://blog.kofi.finance/predictive-mev-on-aptos"/>
         <updated>2025-02-15T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Maximal Extractable Value (MEV) has become a crucial concept in the blockchain world, with implications that are particularly relevant for emerging networks like Aptos. As the blockchain ecosystem evolves, understanding MEV is essential to exploring resilient and innovative infrastructure on platforms that are shaping the future — and Aptos is at the forefront.]]></summary>
         <content type="html"><![CDATA[<p>Maximal Extractable Value (MEV) has become a crucial concept in the blockchain world, with implications that are particularly relevant for emerging networks like Aptos. As the blockchain ecosystem evolves, understanding MEV is essential to exploring resilient and innovative infrastructure on platforms that are shaping the future — and Aptos is at the forefront.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="understanding-mev">Understanding MEV<a href="https://blog.kofi.finance/introduction-to-mev-and-aptos#understanding-mev" class="hash-link" aria-label="Direct link to Understanding MEV" title="Direct link to Understanding MEV">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="understanding-mev">Understanding MEV<a href="https://blog.kofi.finance/predictive-mev-on-aptos#understanding-mev" class="hash-link" aria-label="Direct link to Understanding MEV" title="Direct link to Understanding MEV">​</a></h2>
 <p><a href="https://chain.link/education-hub/maximal-extractable-value-mev" target="_blank" rel="noopener noreferrer">Maximal Extractable Value</a> refers to the maximum value that can be extracted from block production beyond standard block rewards and gas fees. This potential is realized when block producers — whether they are miners or validators — <strong>manipulate the ordering, inclusion, or exclusion of transactions in a block to secure additional profit.</strong></p>
 <p>Originally coined as "Miner Extractable Value" in 2014 by a pseudonymous trader, this concept predicted that miners could leverage <a href="https://www.coingecko.com/learn/what-is-mev-maximal-extractable-value-crypto" target="_blank" rel="noopener noreferrer">transaction ordering</a> for gain. It was later formalized in the seminal 2019 research paper "Flash Boys 2.0," which drew parallels between blockchain transaction manipulation and the practices of high-frequency trading in traditional finance.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="a-brief-timeline-for-the-evolution-of-mev">A brief timeline for the evolution of MEV<a href="https://blog.kofi.finance/introduction-to-mev-and-aptos#a-brief-timeline-for-the-evolution-of-mev" class="hash-link" aria-label="Direct link to A brief timeline for the evolution of MEV" title="Direct link to A brief timeline for the evolution of MEV">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="a-brief-timeline-for-the-evolution-of-mev">A brief timeline for the evolution of MEV<a href="https://blog.kofi.finance/predictive-mev-on-aptos#a-brief-timeline-for-the-evolution-of-mev" class="hash-link" aria-label="Direct link to A brief timeline for the evolution of MEV" title="Direct link to A brief timeline for the evolution of MEV">​</a></h2>
 <p>In essence, MEV is extracted through the reordering of transactions within a block, and the methodology of said has evolved over time. Let's take a look at its evolution.</p>
 <ol>
 <li>
@@ -156,9 +197,9 @@ As MEV concepts expanded beyond Ethereum, other blockchains like Solana develope
 <p><strong>MEV on Aptos: ???</strong></p>
 </li>
 </ol>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="aptos-architecture-and-mev-potential">Aptos Architecture and MEV Potential<a href="https://blog.kofi.finance/introduction-to-mev-and-aptos#aptos-architecture-and-mev-potential" class="hash-link" aria-label="Direct link to Aptos Architecture and MEV Potential" title="Direct link to Aptos Architecture and MEV Potential">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="aptos-architecture-and-mev-potential">Aptos Architecture and MEV Potential<a href="https://blog.kofi.finance/predictive-mev-on-aptos#aptos-architecture-and-mev-potential" class="hash-link" aria-label="Direct link to Aptos Architecture and MEV Potential" title="Direct link to Aptos Architecture and MEV Potential">​</a></h2>
 <p>The architectural design of Aptos, particularly its BFT consensus mechanism and Block-STM parallel execution engine, introduces significant challenges and changes to how MEV (Maximal Extractable Value) can be extracted. These design choices fundamentally alter the landscape of MEV extraction compared to traditional blockchain architectures.</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="aptosbft-consensus-and-mev">AptosBFT Consensus and MEV<a href="https://blog.kofi.finance/introduction-to-mev-and-aptos#aptosbft-consensus-and-mev" class="hash-link" aria-label="Direct link to AptosBFT Consensus and MEV" title="Direct link to AptosBFT Consensus and MEV">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="aptosbft-consensus-and-mev">AptosBFT Consensus and MEV<a href="https://blog.kofi.finance/predictive-mev-on-aptos#aptosbft-consensus-and-mev" class="hash-link" aria-label="Direct link to AptosBFT Consensus and MEV" title="Direct link to AptosBFT Consensus and MEV">​</a></h3>
 <p>Aptos uses AptosBFT, a consensus algorithm based on HotStuff, which implements a round-by-round consensus and block chaining mechanism according to <a href="https://chorus.one/articles/understanding-aptos-how-its-technical-architecture-and-modular-design-transcends-monolithic-chains" target="_blank" rel="noopener noreferrer">Chorus One's analysis</a>. This approach has several implications for MEV:</p>
 <ol>
 <li>
@@ -168,7 +209,7 @@ As MEV concepts expanded beyond Ethereum, other blockchains like Solana develope
 <p><strong>Validator Rotation:</strong> The consensus mechanism rotates proposers (aka validator leaders), making it more challenging for a single entity to consistently control transaction ordering.</p>
 </li>
 </ol>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="block-stm-parallel-execution-and-mev">Block-STM Parallel Execution and MEV<a href="https://blog.kofi.finance/introduction-to-mev-and-aptos#block-stm-parallel-execution-and-mev" class="hash-link" aria-label="Direct link to Block-STM Parallel Execution and MEV" title="Direct link to Block-STM Parallel Execution and MEV">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="block-stm-parallel-execution-and-mev">Block-STM Parallel Execution and MEV<a href="https://blog.kofi.finance/predictive-mev-on-aptos#block-stm-parallel-execution-and-mev" class="hash-link" aria-label="Direct link to Block-STM Parallel Execution and MEV" title="Direct link to Block-STM Parallel Execution and MEV">​</a></h3>
 <p>The Block-STM parallel execution engine introduces a paradigm shift in how transactions are processed, significantly impacting MEV extraction:</p>
 <ol>
 <li>
@@ -181,7 +222,7 @@ As MEV concepts expanded beyond Ethereum, other blockchains like Solana develope
 <p><strong>Ripple Effect:</strong> When a transaction aborts due to a conflict, all higher transactions in the block are scheduled for <a href="https://stackoverflow.com/questions/77804820/block-stm-why-do-we-need-this-condition-when-a-transaction-aborts-all-higher" target="_blank" rel="noopener noreferrer">re-validation</a>. This cascading effect introduces further unpredictability in the final transaction order and state.</p>
 </li>
 </ol>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="why-mev-matters-for-aptos">Why MEV Matters for Aptos<a href="https://blog.kofi.finance/introduction-to-mev-and-aptos#why-mev-matters-for-aptos" class="hash-link" aria-label="Direct link to Why MEV Matters for Aptos" title="Direct link to Why MEV Matters for Aptos">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="why-mev-matters-for-aptos">Why MEV Matters for Aptos<a href="https://blog.kofi.finance/predictive-mev-on-aptos#why-mev-matters-for-aptos" class="hash-link" aria-label="Direct link to Why MEV Matters for Aptos" title="Direct link to Why MEV Matters for Aptos">​</a></h2>
 <p>Understanding and proactively managing MEV is critical for ensuring the success and integrity of the Aptos ecosystem:</p>
 <ul>
 <li>

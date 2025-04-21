@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkkofi_docs=self.webpackChunkkofi_docs||[]).push([[6798],{5175:a=>{a.exports=JSON.parse('{"tag":{"label":"validator","permalink":"/tags/validator","allTagsPath":"/tags","count":1,"unlisted":false},"listMetadata":{"permalink":"/tags/validator","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
