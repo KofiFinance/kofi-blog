@@ -7,3 +7,12 @@ kofi:
   socials:
     x: kofi_finance
     github: kofi_finance
+wagmitt:
+  name: 0xwagmitt
+  title: Founder
+  url: https://kofi.finance
+  image_url: https://github.com/wagmitt/branding/blob/main/logo.png?raw=true
+  page: true
+  socials:
+    x: 0xwagmitt
+    github: wagmitt
