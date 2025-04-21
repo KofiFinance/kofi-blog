@@ -10,53 +10,55 @@ date: 2025-04-21
 
 ## Introduction
 
-As the founder of Kofi Finance, a liquid staking platform on the Aptos blockchain, I enthusiastically support AIP-119, which proposes reducing the APT staking reward rate from approximately 7% to 3.79% over six months. Detailed in the Aptos Foundation’s GitHub issue #587, this visionary proposal enhances capital efficiency by prioritizing DeFi and infrastructure, aligning Aptos with leading layer-1 blockchains like Ethereum and Solana. While it presents challenges for smaller validators, we see it as a transformative opportunity to innovate. At Kofi Finance, we’re committed to empowering validators with MEV-boosted yields and diverse revenue streams, leveraging our MEV infrastructure to deliver superior returns.
+As the founder of Kofi Finance, a liquid staking platform on the Aptos blockchain, I enthusiastically support AIP-119, which proposes reducing the APT staking reward rate from approximately 7% to 3.79% over six months. Detailed in the Aptos Foundation's [GitHub issue #587](https://github.com/aptos-foundation/AIPs/issues/587), this visionary proposal enhances capital efficiency by prioritizing DeFi and infrastructure, aligning Aptos with leading layer-1 blockchains like Ethereum and Solana. While it presents challenges for smaller validators, we see it as a transformative opportunity to innovate. At Kofi Finance, we're committed to empowering validators with MEV-boosted yields and diverse revenue streams, leveraging our MEV infrastructure to deliver superior returns.
 
 ## The Vision of AIP-119
 
-AIP-119 outlines a 1% monthly reduction in staking rewards over three months, with a six-month implementation to foster community collaboration. The current 7% expansion rate limits capital flow into high-impact areas like DeFi, restaking, and infrastructure (e.g., RPC, indexing, MEV). The target 3.79% staking reward encourages more network activity by encouraging participants to explore innovative opportunities that drive network growth, instead of just parking all their APT for "safe-yields"
+[AIP-119](https://github.com/aptos-foundation/AIPs/blob/main/aips/aip-119.md) outlines a 1% monthly reduction in staking rewards over three months, with a six-month implementation to foster community collaboration. The current 7% expansion rate limits capital flow into high-impact areas like DeFi, restaking, and infrastructure (e.g., RPC, indexing, MEV). The target 3.79% staking reward encourages more network activity by encouraging participants to explore innovative opportunities that drive network growth, instead of just parking all their APT for "safe-yields"
 
 ## Challenges and Opportunities for Smaller Validators
 
-We recognize that the reduction in staking rewards poses a challenge for smaller validators, who may struggle to maintain profitability without the scale of larger players. To quantify this, we use the formula _Validator Profit = (Amount Staked × APR% × APT Price) - Validator Cost Per Year_, with a validator cost of $35,000 per year as per the AIP-119 document. Below, we calculate profits for validators with 1M and 3M APT staked at APT prices of $5, $8, and $10, comparing the current 7% APR, proposed 3.79% APR, and a boosted 12% APR achievable through Kofi Finance’s MEV infrastructure:
+We recognize that the reduction in staking rewards poses a challenge for smaller validators, who may struggle to maintain profitability without the scale of larger players.
 
-| Stake Delegated | APT Price | Profit at 7% APR                    | Profit at 3.79% APR                   | Profit at 12% APR (Kofi MEV)        |
-| --------------- | --------- | ----------------------------------- | ------------------------------------- | ----------------------------------- |
-| 1M APT          | $5        | (1M × 0.07 × 5) - 35,000 = -17,500  | (1M × 0.0379 × 5) - 35,000 = -16,050  | (1M × 0.12 × 5) - 35,000 = 25,000   |
-| 1M APT          | $8        | (1M × 0.07 × 8) - 35,000 = 21,000   | (1M × 0.0379 × 8) - 35,000 = -4,680   | (1M × 0.12 × 8) - 35,000 = 61,000   |
-| 1M APT          | $10       | (1M × 0.07 × 10) - 35,000 = 35,000  | (1M × 0.0379 × 10) - 35,000 = 2,900   | (1M × 0.12 × 10) - 35,000 = 85,000  |
-| 3M APT          | $5        | (3M × 0.07 × 5) - 35,000 = 40,000   | (3M × 0.0379 × 5) - 35,000 = 21,850   | (3M × 0.12 × 5) - 35,000 = 145,000  |
-| 3M APT          | $8        | (3M × 0.07 × 8) - 35,000 = 145,000  | (3M × 0.0379 × 8) - 35,000 = 90,960   | (3M × 0.12 × 8) - 35,000 = 265,000  |
-| 3M APT          | $10       | (3M × 0.07 × 10) - 35,000 = 205,000 | (3M × 0.0379 × 10) - 35,000 = 128,700 | (3M × 0.12 × 10) - 35,000 = 325,000 |
+To quantify this, we use the formula:
 
-At 3.79% APR, validators with 1M APT face losses unless APT prices exceed $9.24 (breakeven: 35,000 ÷ (1M × 0.0379) ≈ $9.24), while those with 3M APT remain profitable but with reduced margins. In contrast, Kofi’s MEV infrastructure at 12% APR delivers substantial profits across all scenarios, turning losses into gains for 1M APT validators (e.g., $25,000 profit at $5 APT price) and significantly enhancing returns for 3M APT validators. This challenge could lead to validator exits, impacting decentralization, but we view it as a catalyst for positive transformation. Smaller validators are vital to the network’s diversity and security, and with targeted support, we’re confident they can excel.
+with a validator cost of \$35,000 per year as per the AIP-119 document. Below, we calculate profits for validators with 1M and 3M APT staked at APT prices of $5, $8, and $10, comparing the current 7% APR, proposed 3.79% APR, and a boosted 12% APR achievable through Kofi Finance's MEV infrastructure:
 
-At Kofi Finance, we’re inspired to empower smaller validators through our liquid staking protocol. By delivering MEV-boosted yields, as demonstrated in the table, and pioneering new revenue streams, we aim to ensure all validators thrive in Aptos’ evolving ecosystem. The Foundation’s community-driven approach, combined with our innovative strategies, sets the stage for a vibrant future.
+| Stake Delegated | APT Price | Profit at 7% APR | Profit at 3.79% APR | Profit at 12% APR (Kofi MEV) |
+| --------------- | --------- | ---------------- | ------------------- | ---------------------------- |
+| 1M APT          | $5        | -17,500          | -16,050             | 25,000                       |
+| 1M APT          | $8        | 21,000           | -4,680              | 61,000                       |
+| 1M APT          | $10       | 35,000           | 2,900               | 85,000                       |
+| 3M APT          | $5        | 40,000           | 21,850              | 145,000                      |
+| 3M APT          | $8        | 145,000          | 90,960              | 265,000                      |
+| 3M APT          | $10       | 205,000          | 128,700             | 325,000                      |
+
+At 3.79% APR, validators with 1M APT face losses unless APT prices exceed \$9.24, while those with 3M APT remain profitable but with reduced margins. In contrast, Kofi's MEV infrastructure at 12% APR delivers substantial profits across all scenarios, turning losses into gains for 1M APT validators (e.g., \$25,000 profit at \$5 APT price) and significantly enhancing returns for 3M APT validators. This challenge could lead to validator exits, impacting decentralization, but we view it as a catalyst for positive transformation. Smaller validators are vital to the network's diversity and security, and with targeted support, we're confident they can excel.
+
+At Kofi Finance, we're inspired to empower smaller validators through our liquid staking protocol. By delivering MEV-boosted yields, as demonstrated in the table, and pioneering new revenue streams, we aim to ensure all validators thrive in Aptos' evolving ecosystem. The Foundation's community-driven approach, combined with our innovative strategies, sets the stage for a vibrant future.
 
 ## A Call for a Stake-Matching Program
 
-To fully realize AIP-119’s potential, we urge the Aptos Foundation to enhance its community validator program with a stake-matching initiative. We propose matching delegated stake for smaller validators, doubling their staked APT up to 3M APT. For a 1M APT validator, an additional 1M APT increases their stake to 2M APT, boosting profit from a $16,050 loss to a $2,900 gain at $5 APT price and 3.79% APR, as shown: _(2M × 0.0379 × 5) - 35,000 = 2,900_.
+To fully realize AIP-119's potential, we urge the Aptos Foundation to enhance its community validator program with a stake-matching initiative. We propose matching delegated stake for smaller validators, doubling their staked APT up to 3M APT. For a 1M APT validator, an additional 1M APT increases their stake to 2M APT, boosting profit from a \$16,050 loss to a \$2,900 gain at \$5 APT price and 3.79% APR.
 
 This program would:
 
-- **Strengthen Decentralization**: Supporting smaller validators ensures a diverse validator set, reinforcing Aptos’ decentralized foundation.
+- **Strengthen Decentralization**: Supporting smaller validators ensures a diverse validator set, reinforcing Aptos' decentralized foundation.
 - **Inspire Participation**: Matching stake lowers barriers, inviting new validators to enrich our community.
-- **Drive Ecosystem Growth**: Empowering smaller validators fosters trust and collaboration, aligning with Aptos’ inclusive governance.
-
-We envision funding this with the Foundation’s APT holdings (over 90% of staked APT) or transaction fees, using metrics like uptime or governance engagement for eligibility to ensure fairness. Inspired by Solana’s delegation program, this initiative would complement Kofi’s MEV solutions, solidifying Aptos’ commitment to its validator community and making AIP-119 a triumph for all stakeholders.
+- **Better Governance**: Empowering smaller validators fosters trust and collaboration, aligning with Aptos' inclusive governance.
 
 ## New Revenue Streams: Fueling Validator Success
 
-We’re thrilled by AIP-119’s push toward a dynamic economy, opening exciting avenues for validators to offset reduced rewards. At Kofi Finance, we’re leading with:
+We're thrilled by AIP-119's push toward a dynamic economy, opening exciting avenues for validators to offset reduced rewards. At Kofi Finance, we're leading with:
 
 ### 1. MEV Capture
 
-Our MEV infrastructure, leveraging insights from our research with Aptos core engineers (February 19, 2025), enables validators to profit from transaction ordering in DeFi-heavy blocks. Our blog.kofi.finance reports project APRs of 12–18% for kAPT/stkAPT pools, as shown in our table, ensuring robust returns that far exceed the 3.79% staking reward.
+Our MEV infrastructure, leveraging insights from our research with Aptos core engineers, enables validators to profit from transaction ordering.
 
 ### 2. Transaction Tips
 
-We see tips for prioritized processing as a key revenue stream. Inspired by Ethereum’s EIP-1559, we’re developing tip-sharing in our protocol, distributing earnings to boost yields for validators and stakers, enhancing our platform’s appeal.
+We see tips for prioritized processing as a key revenue stream. Inspired by Ethereum's EIP-1559, we're developing tip-sharing in our protocol, distributing earnings to boost yields for validators and stakers, enhancing our platform's appeal.
 
 ## Our Role at Kofi Finance
 
-Our liquid staking protocol, built by a team with expertise in MEV, Taiko, and Animoca (February 28, 2025), delivers MEV-boosted yields via kAPT and stkAPT. Partnerships with Tapp Exchange, Aries Markets, Joule, and Hyperfluid amplify returns, while our Discord community fosters collaboration. With mainnet deployment, audits with Zenith and Ottersec, and ongoing MEV research (March 17, 2025), we’re aligned with Aptos’ vision. By offering tips, DeFi rewards, and infrastructure services, we aim to make Kofi Finance the premier liquid staking platform, delivering yields exceeding 3.79%.
+Our liquid staking protocol, built by a team with expertise in MEV, DeFi and liquid staking, delivers MEV-boosted yields via kAPT and stkAPT. Partnerships with Tapp Exchange, Aries Markets, Joule, and Hyperfluid amplify returns, while our Discord community fosters collaboration. With mainnet deployment, audits with Zenith and Ottersec, and ongoing MEV research, we're aligned with Aptos' vision. By offering tips, DeFi rewards, and infrastructure services, we aim to make Kofi Finance the premier liquid staking platform, delivering yields exceeding 3.79%.
