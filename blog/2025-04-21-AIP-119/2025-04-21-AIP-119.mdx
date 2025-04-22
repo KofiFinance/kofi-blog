@@ -6,7 +6,11 @@ tags: [aptos, validator, mev]
 date: 2025-04-21
 ---
 
+import ValidatorProfitCalculator from "@site/src/components/ValidatorProfitCalculator";
+
 # AIP-119 and the Future of Validator Economics on Aptos
+
+_edit (April 22, 2025): Added profitability calculator to help estimate validator profitability at different APRs and APT prices._
 
 ## Introduction
 
@@ -20,20 +24,19 @@ As the founder of Kofi Finance, a liquid staking platform on the Aptos blockchai
 
 We recognize that the reduction in staking rewards poses a challenge for smaller validators, who may struggle to maintain profitability without the scale of larger players.
 
-To quantify this, we use the formula:
+The estimated annual profit for a validator can be calculated using the formula:
+_Profit = (Total Stake Delegated × APT Price × Network APR × Validator Commission Rate) - Annual Validator Cost_
 
-with a validator cost of \$35,000 per year as per the AIP-119 document. Below, we calculate profits for validators with 1M and 3M APT staked at APT prices of \$5, \$8, and \$10, comparing the current 7% APR, proposed 3.79% APR, and a boosted 12% APR achievable through Kofi Finance's MEV infrastructure:
+Use the calculator below to estimate profitability based on different inputs. We've used an average validator cost of $35,000 per year and **assumed a 5% commission rate** for the defaults and the table that follows (note: the table simplifies the calculation by showing profit based on total rewards before commission for brevity, but the calculator uses the full formula).
 
-| Stake Delegated | APT Price | Profit at 7% APR | Profit at 3.79% APR | Profit at 12% APR (Kofi MEV) |
-| --------------- | --------- | ---------------- | ------------------- | ---------------------------- |
-| 1M APT          | $5        | -17,500          | -16,050             | 25,000                       |
-| 1M APT          | $8        | 21,000           | -4,680              | 61,000                       |
-| 1M APT          | $10       | 35,000           | 2,900               | 85,000                       |
-| 3M APT          | $5        | 40,000           | 21,850              | 145,000                      |
-| 3M APT          | $8        | 145,000          | 90,960              | 265,000                      |
-| 3M APT          | $10       | 205,000          | 128,700             | 325,000                      |
+<ValidatorProfitCalculator />
 
-At 3.79% APR, validators with 1M APT face losses unless APT prices exceed \$9.24, while those with 3M APT remain profitable but with reduced margins. In contrast, Kofi's MEV infrastructure at 12% APR delivers substantial profits across all scenarios, turning losses into gains for 1M APT validators (e.g., \$25,000 profit at \$5 APT price) and significantly enhancing returns for 3M APT validators. This challenge could lead to validator exits, impacting decentralization, but we view it as a catalyst for positive transformation. Smaller validators are vital to the network's diversity and security, and with targeted support, we're confident they can excel.
+| Stake Delegated | APT Price | Validator Profit at 3.79% APR | Validator Profit at 7% APR | Validator Profit at 12% APR (Kofi MEV) |
+| --------------- | --------- | ----------------------------- | -------------------------- | -------------------------------------- |
+| 1M APT          | $5        | -25,525                       | -17,500                    | -5000                                  |
+| 3.7M APT        | $5        | 58                            | 29,750                     | 120,400                                |
+
+At 3.79% APR, 5% commission and at current APT price of $5, a validator would need about 3.7M APT staked to break even.
 
 At Kofi Finance, we're inspired to empower smaller validators through our liquid staking protocol. By delivering MEV-boosted yields, as demonstrated in the table, and pioneering new revenue streams, we aim to ensure all validators thrive in Aptos' evolving ecosystem. The Foundation's community-driven approach, combined with our innovative strategies, sets the stage for a vibrant future.
 
